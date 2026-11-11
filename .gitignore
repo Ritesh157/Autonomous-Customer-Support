@@ -9,3 +9,50 @@ wheels/
 # Virtual environments
 .venv
 auto-customer-support/
+
+# Secrets (commit .env.example only)
+.env
+.env.*
+!.env.example
+
+# Runtime data (SQLite, checkpoints)
+data/
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+terraform.tfvars
+*.auto.tfvars
+backend.hcl
+tfplan
+*.tfplan
+crash.log
+
+# Test / lint caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Frontend
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
