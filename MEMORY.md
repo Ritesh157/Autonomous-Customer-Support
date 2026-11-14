@@ -129,13 +129,13 @@ Update each row in place. Do not mark a row done from intention.
 
 | Surface | State on 2026-10-25 |
 |---|---|
-| Repository contents | Requirement files are in place. P1-1 is merged. P1-2 adds health routes, request-id middleware, and `tests/api/test_health.py`. Sample data and the rest of the backend are absent. `frontend/lib/types.ts` is still created in P12-2. |
-| Implemented | P1-1 merged: cached settings and JSON logging. P1-2, not merged: `GET /health`, `GET /health/live` (no dependency I/O), `GET /health/ready` (configuration probes, 503 when degraded), `RequestIdMiddleware`, and CORS exposing `X-Request-ID`. The pytest harness, Makefile, and `.env.example` are still absent. Ready probes do not open a database, Redis, Qdrant, or LLM connection. |
-| Validated locally | `tests/unit/test_config_logging.py` and `tests/api/test_health.py`: 24 passed on this machine. `make test` and `make demo` do not exist yet. This is not a Phase 1 exit. |
+| Repository contents | Requirement files are in place. P1-1 is implemented on `feature/backend-config-logging` (PR open, not yet merged). P1-2 will add health routes, request-id middleware, and `tests/api/test_health.py`. Sample data and the rest of the backend are absent. `frontend/lib/types.ts` is still created in P12-2. |
+| Implemented | P1-1 implemented, not yet merged: cached settings and JSON logging. P1-2, not started: `GET /health`, `GET /health/live` (no dependency I/O), `GET /health/ready` (configuration probes, 503 when degraded), `RequestIdMiddleware`, and CORS exposing `X-Request-ID`. The pytest harness, Makefile, and `.env.example` are still absent. Ready probes do not open a database, Redis, Qdrant, or LLM connection. |
+| Validated locally | `tests/unit/test_config_logging.py`: 9 passed on this machine (health tests are P1-2). `make test` and `make demo` do not exist yet. This is not a Phase 1 exit. |
 | Cloud credentials | None used. |
 | Applied to a real account | Nothing. |
 | GitHub Actions | Workflow files are not in the repo. None have been executed. |
-| Phase plan | Phase 1 is in progress (P1-1 merged, P1-2 implemented locally). Phases 2–13 are not started. |
+| Phase plan | Phase 1 is in progress (P1-1 implemented, awaiting merge). Phases 2–13 are not started. |
 
 ## Open questions from `CLAUDE.md` §20
 
