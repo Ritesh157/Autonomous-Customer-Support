@@ -130,7 +130,7 @@ Update each row in place. Do not mark a row done from intention.
 | Surface | State on 2026-10-25 |
 |---|---|
 | Repository contents | Requirement files are in place. P1-1 is merged. P1-2 is implemented on `feature/backend-health-request-id` (not yet merged) and adds health routes, request-id middleware, and `tests/api/test_health.py`. Sample data and the rest of the backend are absent. `frontend/lib/types.ts` is still created in P12-2. |
-| Implemented | P1-1 merged: cached settings and JSON logging. P1-2, not yet merged: `GET /health`, `GET /health/live` (no dependency I/O), `GET /health/ready` (configuration probes, 503 when degraded), `RequestIdMiddleware`, and CORS exposing `X-Request-ID`. The pytest harness, Makefile, and `.env.example` are still absent. Ready probes do not open a database, Redis, Qdrant, or LLM connection. |
+| Implemented | P1-1 merged: cached settings and JSON logging. P1-2, not yet merged: `GET /health`, `GET /health/live` (no dependency I/O), `GET /health/ready` (configuration probes, 503 when degraded), `RequestIdMiddleware`, and CORS exposing `X-Request-ID`. P1-3 (pending merge): `tests/conftest.py` forces offline env vars before app import and clears the settings cache per test; pytest asyncio config added. Auth fixtures wait for Phase 3. The Makefile and `.env.example` are still absent. Ready probes do not open a database, Redis, Qdrant, or LLM connection. |
 | Validated locally | `tests/unit/test_config_logging.py`: and `tests/api/test_health.py`: 18 passed on this machine. `make test` and `make demo` do not exist yet. This is not a Phase 1 exit. |
 | Cloud credentials | None used. |
 | Applied to a real account | Nothing. |
