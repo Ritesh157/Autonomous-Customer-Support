@@ -2,24 +2,26 @@
 -- Mirrors backend/app/models/entities.py; tests/unit/test_schema_sql.py keeps them in sync.
 -- Apply in the Supabase SQL editor, or via database/migrations/0001_initial_schema.sql.
 
+-- This SQL code creates a PostgreSQL trigger function that automatically updates the updated_at column whenever an existing database row is modified.
+-- It contains the instructions for updating the timestamp
 CREATE OR REPLACE FUNCTION set_updated_at() RETURNS trigger AS $$
 BEGIN
-  NEW.updated_at = now();
-  RETURN NEW;
+  NEW.updated_at = now();	-- NEW is a variable represents the new version of the row that is being inserted or updated.
+  RETURN NEW;				-- Returns the modified row to PostgreSQL
 END;
-$$ LANGUAGE plpgsql;
+$$ LANGUAGE plpgsql;	-- plpgsql tells PostgreSQL that the function is written in PL/pgSQL, PostgreSQL's procedural programming language.
 
 CREATE TABLE IF NOT EXISTS audit_logs (
-	actor VARCHAR(255) NOT NULL, 
-	actor_type VARCHAR(20) NOT NULL, 
-	action VARCHAR(100) NOT NULL, 
-	resource_type VARCHAR(50) NOT NULL, 
-	resource_id VARCHAR(100) NOT NULL, 
-	details JSON NOT NULL, 
-	request_id VARCHAR(128) NOT NULL, 
-	id VARCHAR(36) NOT NULL, 
-	created_at TIMESTAMP WITH TIME ZONE NOT NULL, 
-	updated_at TIMESTAMP WITH TIME ZONE NOT NULL, 
+	actor VARCHAR(255) NOT NULL,		-- Ex: admin@example.com 
+	actor_type VARCHAR(20) NOT NULL, 	-- Ex: user, ai, system, admin
+	action VARCHAR(100) NOT NULL,	-- Stores the action performed. Ex: ticket_created, ticket_updated, ticket_escalated 
+	resource_type VARCHAR(50) NOT NULL,	-- Stores the type of resource affected by the action. Ex: ticket, customer, subscription, approval_request 
+	resource_id VARCHAR(100) NOT NULL,	-- Stores the ID of the specific resource affected. Ex: ticket-123 
+	details JSON NOT NULL,		-- Stores additional information about the action in JSON format. 
+	request_id VARCHAR(128) NOT NULL, -- Stores the ID of the application request associated with this audit event. Ex: req-987654
+	id VARCHAR(36) NOT NULL, 		-- Stores the unique ID of each audit record. Ex: 550e8400-e29b-41d4-a716-446655440000
+	created_at TIMESTAMP WITH TIME ZONE NOT NULL,	-- Stores when the audit record was created.
+	updated_at TIMESTAMP WITH TIME ZONE NOT NULL,	-- Stores when the audit record was last updated. 
 	PRIMARY KEY (id)
 );
 
@@ -89,18 +91,19 @@ CREATE TABLE IF NOT EXISTS profiles (
 DROP TRIGGER IF EXISTS trg_profiles_updated_at ON profiles;
 CREATE TRIGGER trg_profiles_updated_at BEFORE UPDATE ON profiles FOR EACH ROW EXECUTE FUNCTION set_updated_at();
 
+-- this table stores help-center articles that your AI support agent can use to answer customer questions.
 CREATE TABLE IF NOT EXISTS support_articles (
-	slug VARCHAR(200) NOT NULL, 
-	title VARCHAR(500) NOT NULL, 
-	category VARCHAR(40) NOT NULL, 
-	tags JSON NOT NULL, 
-	summary TEXT NOT NULL, 
-	content TEXT NOT NULL, 
-	id VARCHAR(36) NOT NULL, 
-	created_at TIMESTAMP WITH TIME ZONE NOT NULL, 
-	updated_at TIMESTAMP WITH TIME ZONE NOT NULL, 
+	slug VARCHAR(200) NOT NULL,	-- Stores a unique, URL-friendly identifier for an article. Ex: reset-password, update-billing-information, troubleshoot-login
+	title VARCHAR(500) NOT NULL,	-- Stores the article's title. Ex: How to Reset Your Password 
+	category VARCHAR(40) NOT NULL,	-- Stores the category to which the article belongs. Ex: Account, Billing, Technical, API 
+	tags JSON NOT NULL,				-- Stores article tags in JSON format. 
+	summary TEXT NOT NULL, 			-- Stores a short description or summary of the article.
+	content TEXT NOT NULL, 			-- Stores the complete content of the support article.
+	id VARCHAR(36) NOT NULL, 		-- Stores the unique ID of each support article
+	created_at TIMESTAMP WITH TIME ZONE NOT NULL, 		-- Stores when the support article was created
+	updated_at TIMESTAMP WITH TIME ZONE NOT NULL, 		-- Stores when the support article was last updated
 	PRIMARY KEY (id), 
-	UNIQUE (slug)
+	UNIQUE (slug)					-- This ensures that two support articles cannot have the same slug.
 );
 
 CREATE INDEX IF NOT EXISTS ix_support_articles_category ON support_articles (category);
