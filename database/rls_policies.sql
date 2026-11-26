@@ -3,11 +3,12 @@
 -- The browser holds only the anon key: with RLS on and no policy for anon/authenticated,
 -- direct table access is denied. Staff identity is a profile row keyed by the JWT email.
 
+-- identify the currently logged-in user and retrieve their staff role (admin, agent, or viewer) from your profiles table.
 CREATE OR REPLACE FUNCTION current_support_role() RETURNS text AS $$
   SELECT role FROM profiles WHERE email = auth.jwt() ->> 'email'
 $$ LANGUAGE sql STABLE SECURITY DEFINER;
 
-ALTER TABLE audit_logs ENABLE ROW LEVEL SECURITY;
+ALTER TABLE audit_logs ENABLE ROW LEVEL SECURITY;   -- turns on Row-Level Security for the audit_logs table
 ALTER TABLE customers ENABLE ROW LEVEL SECURITY;
 ALTER TABLE incidents ENABLE ROW LEVEL SECURITY;
 ALTER TABLE products ENABLE ROW LEVEL SECURITY;
