@@ -33,6 +33,8 @@ os.environ.update(_OFFLINE_ENV)
 
 import pytest  # noqa: E402
 from app.core.config import get_settings  # noqa: E402
+from app.core.security import create_token  # noqa: E402
+from app.schemas.common import Role  # noqa: E402
 
 
 @pytest.fixture(autouse=True)
@@ -46,3 +48,21 @@ def _fresh_settings():
 @pytest.fixture
 def settings():
     return get_settings()
+
+
+@pytest.fixture
+def admin_headers() -> dict[str, str]:
+    token = create_token("admin@clouddesk.demo", Role.ADMIN)
+    return {"Authorization": f"Bearer {token}"}
+
+
+@pytest.fixture
+def agent_headers() -> dict[str, str]:
+    token = create_token("sam.agent@clouddesk.demo", Role.AGENT)
+    return {"Authorization": f"Bearer {token}"}
+
+
+@pytest.fixture
+def viewer_headers() -> dict[str, str]:
+    token = create_token("vic.viewer@clouddesk.demo", Role.VIEWER)
+    return {"Authorization": f"Bearer {token}"}
