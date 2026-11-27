@@ -1,0 +1,10 @@
+[
+  {"ticket_number": "CD-0912", "category": "login_issue", "subject": "SAML sign-in fails after certificate change", "resolution_summary": "Uploaded the new identity provider certificate in SSO settings and tested with one user."},
+  {"ticket_number": "CD-0921", "category": "billing", "subject": "Charged for removed seats", "resolution_summary": "Confirmed seat removal date against the invoice and raised a prorated refund for approval."},
+  {"ticket_number": "CD-0933", "category": "api_failure", "subject": "429 errors during bulk export", "resolution_summary": "Added exponential backoff using the Retry-After header and lowered concurrency."},
+  {"ticket_number": "CD-0940", "category": "storage_quota", "subject": "Uploads blocked at quota", "resolution_summary": "Emptied trash, removed old versions and offered a storage add-on."},
+  {"ticket_number": "CD-0952", "category": "workspace_permissions", "subject": "External share option disabled", "resolution_summary": "A workspace admin enabled external sharing and granted the member the editor role."},
+  {"ticket_number": "CD-0964", "category": "integration", "subject": "Slack notifications stopped", "resolution_summary": "Reauthorized the Slack connection after its token was revoked."},
+  {"ticket_number": "CD-0977", "category": "login_issue", "subject": "Locked out of MFA", "resolution_summary": "Verified identity, then an admin reset the MFA enrolment."},
+  {"ticket_number": "CD-0985", "category": "feature_request", "subject": "Calendar view request", "resolution_summary": "Logged the request with product and explained there is no committed date."}
+]

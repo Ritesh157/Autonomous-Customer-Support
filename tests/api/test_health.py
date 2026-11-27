@@ -38,8 +38,8 @@ def test_ready_degraded_without_leaking_secrets(monkeypatch):
     monkeypatch.setenv("LLM_API_KEY", "")
     monkeypatch.setenv("DATABASE_URL", "postgresql+asyncpg://u:hunter2@db/x")
     get_settings.cache_clear()
-    with TestClient(create_app()) as c:
-        r = c.get("/health/ready")
+    # No ``with``: the lifespan would try to connect to this unreachable database.
+    r = TestClient(create_app()).get("/health/ready")
     get_settings.cache_clear()
     assert r.status_code == 503
     assert r.json()["status"] == "degraded"

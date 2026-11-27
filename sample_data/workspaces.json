@@ -1,0 +1,11 @@
+[
+  {"customer": "cust-001", "name": "Northwind HQ", "member_count": 243, "storage_used_gb": 4120, "integrations": ["slack", "okta"], "sso_enabled": true, "external_sharing_enabled": true},
+  {"customer": "cust-002", "name": "Bell Studio", "member_count": 5, "storage_used_gb": 310, "integrations": ["slack"], "sso_enabled": false, "external_sharing_enabled": true},
+  {"customer": "cust-003", "name": "DataPipe Core", "member_count": 22, "storage_used_gb": 540, "integrations": ["api"], "sso_enabled": false, "external_sharing_enabled": true},
+  {"customer": "cust-004", "name": "Santos Media Library", "member_count": 5, "storage_used_gb": 200, "integrations": ["google_drive"], "sso_enabled": false, "external_sharing_enabled": true},
+  {"customer": "cust-005", "name": "Harbor Matters", "member_count": 117, "storage_used_gb": 2210, "integrations": ["okta"], "sso_enabled": true, "external_sharing_enabled": false},
+  {"customer": "cust-005", "name": "Harbor Legacy 2019", "member_count": 4, "storage_used_gb": 60, "integrations": [], "sso_enabled": false, "external_sharing_enabled": false},
+  {"customer": "cust-006", "name": "Okafor Labs", "member_count": 3, "storage_used_gb": 2.4, "integrations": [], "sso_enabled": false, "external_sharing_enabled": true},
+  {"customer": "cust-007", "name": "Quinn Retail Ops", "member_count": 6, "storage_used_gb": 88, "integrations": ["slack"], "sso_enabled": false, "external_sharing_enabled": true},
+  {"customer": "cust-008", "name": "Mehta Works", "member_count": 1, "storage_used_gb": 0.6, "integrations": [], "sso_enabled": false, "external_sharing_enabled": true}
+]

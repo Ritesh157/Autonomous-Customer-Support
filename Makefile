@@ -31,7 +31,9 @@ test:  ## offline pytest
 lint:
 	$(PY) -m ruff check .
 
-seed:    ; @echo "not implemented yet (Phase 2)"; exit 1
+seed:  ## create tables, load sample data into an empty DB
+	$(PY) -m app.services.seed_service
+
 ingest:  ; @echo "not implemented yet (Phase 5)"; exit 1
 demo:    ; @echo "not implemented yet (Phase 9) - TICKET=$(TICKET)"; exit 1
 mcp:     ; @echo "not implemented yet (Phase 6)"; exit 1

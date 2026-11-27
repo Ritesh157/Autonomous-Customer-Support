@@ -1,0 +1,4 @@
+[
+  {"key": "inc-001", "title": "Elevated SSO sign-in failures after certificate rotation", "service": "authentication", "status": "identified", "impact": "Some SAML sign-ins fail with a response validation error.", "started_at": "2026-11-20T06:40:00Z", "resolved_at": null},
+  {"key": "inc-002", "title": "Delayed integration notifications", "service": "integrations", "status": "resolved", "impact": "Slack notifications were delayed by up to 20 minutes.", "started_at": "2026-11-02T10:00:00Z", "resolved_at": "2026-11-02T13:30:00Z"}
+]
