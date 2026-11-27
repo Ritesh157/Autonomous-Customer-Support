@@ -1,0 +1,10 @@
+[
+  {"customer": "cust-001", "plan": "enterprise", "seats": 250, "status": "active", "renews_at": "2027-02-11T00:00:00Z", "mrr": 6000, "storage_quota_gb": 10000, "storage_used_gb": 4120, "api_rate_limit": 6000},
+  {"customer": "cust-002", "plan": "business", "seats": 8, "status": "active", "renews_at": "2026-12-20T00:00:00Z", "mrr": 200, "storage_quota_gb": 1000, "storage_used_gb": 310, "api_rate_limit": 1200},
+  {"customer": "cust-003", "plan": "business", "seats": 25, "status": "active", "renews_at": "2027-01-05T00:00:00Z", "mrr": 625, "storage_quota_gb": 1000, "storage_used_gb": 540, "api_rate_limit": 1200},
+  {"customer": "cust-004", "plan": "pro", "seats": 5, "status": "active", "renews_at": "2026-12-17T00:00:00Z", "mrr": 60, "storage_quota_gb": 200, "storage_used_gb": 200, "api_rate_limit": 600},
+  {"customer": "cust-005", "plan": "enterprise", "seats": 120, "status": "active", "renews_at": "2027-06-30T00:00:00Z", "mrr": 2880, "storage_quota_gb": 5000, "storage_used_gb": 2210, "api_rate_limit": 6000},
+  {"customer": "cust-006", "plan": "free", "seats": 3, "status": "active", "renews_at": null, "mrr": 0, "storage_quota_gb": 5, "storage_used_gb": 2.4, "api_rate_limit": 60},
+  {"customer": "cust-007", "plan": "pro", "seats": 6, "status": "past_due", "renews_at": "2026-12-08T00:00:00Z", "mrr": 72, "storage_quota_gb": 200, "storage_used_gb": 88, "api_rate_limit": 600},
+  {"customer": "cust-008", "plan": "free", "seats": 1, "status": "trial", "renews_at": "2026-12-14T00:00:00Z", "mrr": 0, "storage_quota_gb": 5, "storage_used_gb": 0.6, "api_rate_limit": 60}
+]

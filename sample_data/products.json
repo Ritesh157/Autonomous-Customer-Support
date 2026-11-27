@@ -1,0 +1,7 @@
+[
+  {"name": "CloudDesk Workspaces", "description": "Team collaboration spaces with roles and sharing controls.", "meta": {"service": "workspaces"}},
+  {"name": "CloudDesk Files", "description": "Cloud file storage with version history and trash recovery.", "meta": {"service": "storage"}},
+  {"name": "CloudDesk API", "description": "REST API with per-plan rate limits.", "meta": {"service": "api"}},
+  {"name": "CloudDesk Billing", "description": "Seat-based subscriptions and invoices.", "meta": {"service": "billing"}},
+  {"name": "CloudDesk Integrations", "description": "Connectors for chat and storage tools.", "meta": {"service": "integrations"}}
+]
