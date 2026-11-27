@@ -1,4 +1,4 @@
-"""FastAPI entrypoint. Middleware order (outermost last): CORS -> RequestId -> ..."""
+"""FastAPI entrypoint. Middleware order (outermost first): CORS → RequestId → RateLimit → Audit."""
 
 from __future__ import annotations
 
@@ -12,6 +12,7 @@ from app.api import auth, health
 from app.core.config import get_settings
 from app.core.database import create_tables, dispose_engine
 from app.core.logging import setup_logging
+from app.middleware.audit import AuditMiddleware
 from app.middleware.rate_limit import RateLimitMiddleware
 from app.middleware.request_id import HEADER, RequestIdMiddleware
 from app.services.seed_service import bootstrap_demo_data
@@ -33,7 +34,9 @@ def create_app() -> FastAPI:
     setup_logging()
     app = FastAPI(title="CloudDesk Support API", version="0.1.0", lifespan=lifespan)
 
-    # add_middleware prepends; last added = outermost. Order: CORS → RequestId → RateLimit → app.
+    # add_middleware prepends; last added = outermost.
+    # Final order: CORS → RequestId → RateLimit → Audit → app routes.
+    app.add_middleware(AuditMiddleware)
     app.add_middleware(RateLimitMiddleware)
     app.add_middleware(RequestIdMiddleware)
     app.add_middleware(
